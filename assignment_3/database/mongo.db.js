@@ -6,8 +6,8 @@ let _db = null;
 // connect to MongoDB
 const connect = async () => {
   try {
-    let dbName = "rifat";
-    let dbPass = "rifat12345";
+    let dbName = "";
+    let dbPass = "";
     const url = `mongodb+srv://${dbName}:${dbPass}@cluster0.ltldm.mongodb.net/assignment3?retryWrites=true&w=majority`;
     const client = new MongoClient(url, {
       useNewUrlParser: true,

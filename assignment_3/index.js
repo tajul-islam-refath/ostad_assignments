@@ -2,7 +2,6 @@ const http = require("http");
 const { connect, getDb } = require("./database/mongo.db.js");
 
 let _db = null;
-
 const server = http.createServer();
 const port = process.env.PORT || 8080;
 server.listen(port, async function () {
@@ -15,7 +14,9 @@ server.listen(port, async function () {
   // getOneWithoutConditaion();
   // getOne();
   // getWithProjection();
-  updateOne();
+  // updateOne();
+  // updateMany();
+  deleteOne();
 });
 
 const insertMany = async () => {
@@ -130,6 +131,31 @@ const updateOne = async () => {
     let res = await Users.findOneAndUpdate(query, {
       $set: data,
     });
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const updateMany = async () => {
+  const Users = _db.collection("Users");
+  try {
+    let query = { };
+    let data = { updatedAt: new Date() };
+    let res = await Users.updateMany(query, {
+      $set: data,
+    });
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const deleteOne = async () => {
+  const Users = _db.collection("Users");
+  try {
+    let query = { name:"Student 5" };
+    let res = await Users.deleteOne(query);
     console.log(res);
   } catch (err) {
     console.log(err);
