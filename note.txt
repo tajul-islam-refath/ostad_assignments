@@ -1,0 +1,9 @@
+
+
+#backend
+1. create a (.env) file
+PORT = 5000
+DB_NAME= mongodb database name
+DB_PASS= mongodb database pass
+2. Start application
+npm run dev
